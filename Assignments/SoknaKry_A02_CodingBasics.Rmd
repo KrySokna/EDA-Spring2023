@@ -98,6 +98,16 @@ Passing_grade <- function(Test_score) {
   return(result)
 }
 
+Passing_mark<-function(Test_score){
+  result<-ifelse(Test_score>=50,TRUE,FALSE,print("TRUE"))
+}
+
+Passing_mark <- function(Test_score) {
+  result <- ifelse(Test_score >= 50, TRUE, FALSE)
+  print(result)
+}
+
+
 Passing_grade(Test_score)
   
 ```

@@ -32,6 +32,7 @@ Suppose you want just the column speed. How would you access that data?
 
 ```{r}
 cars$speed
+
 ```
 
 How would you store it on another object?
@@ -108,11 +109,14 @@ nrow(df)
 length(df)  #same as ncol
 summary(df)
 head(df) #show the first 6 rows of df
+head(df,n=10)
+tail(df,n=10)
 
 #If you know the number of the column you want you can refer to that to access column
-df[,1]
+df[,1] ## refer to column 1
+df[10:20,1:2] #row 10 to 20, and column 1 to 2 
 
 #you could also use this notation to delete columns
-df <- df[,-2]
-df
+df2 <- df[,-2] # df2 = df without colum 2 ; eras the colum 2
+df2
 ```
