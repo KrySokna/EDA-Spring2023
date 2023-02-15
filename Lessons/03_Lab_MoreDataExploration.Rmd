@@ -3,6 +3,8 @@ title: "Lab 3 - Data Types | Exploring Datasets"
 author: "Environmental Data Analytics | John Fay and Luana Lima "
 date: "Spring 2023"
 output: pdf_document
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r setup, include=FALSE}
@@ -94,13 +96,19 @@ Question: In the R chunk below, write "dataframe1\$". Press `tab` after you type
 Find a ten-day forecast of temperatures (Fahrenheit) for Durham, North Carolina. Create two vectors, one representing the high temperature on each of the ten days and one representing the low.
 
 ```{r DataExercise-1a}
-
+highf <- c(54,71,72,63,51,52,61,54,67,73)
+highl <- c(42,49,60,46,32,52,59,43,55,49)
 ```
 
-Now, create two additional vectors that include the ten-day forecast for the high and low temperatures in Celsius. Use a function to create the two new vectors from your existing ones in Fahrenheit.
+Now, create two additional vectors that include the ten-day forecast for the high and low temperatures in Celsius. Use a function to create the two new vectors from your existing ones in Fahrenheit. 
+(f-32)x5/9 = c
 
 ```{r DataExercise-1b}
-
+temp_conversion <-function(F)
+f2c <- function(F)
+{c<-round((f-32*5/9),2) return (c)}
+highc <-f2c(highf)
+lowc<-f2c(lowf)
 ```
 
 Combine your four vectors into a data frame and add informative column names.
@@ -141,7 +149,7 @@ Install and load the package lubridate into your R session. Lubridate offers fas
 More info on lubridate [here][<https://cran.r-project.org/web/packages/lubridate/lubridate.pdf>].
 
 ```{r DateExercise1}
-#install.packages("lubridate")
+install.packages("lubridate")
 library(lubridate)
 
 #Ex1
@@ -168,6 +176,8 @@ str_juneteenth <- "19 June 1865"
 str_past <- "55-feb-3"
 date_obj_past <- ymd(str_past)
 date_obj_past
+
+ifelse(year(date_obj_today) %%100 >23, year(date_obj_past)-100, year(date_obj_past)) #this one is wrong, fix it 
 
 #Build a function to fix year that is more general than the one discussed in the lesson
 fix.early.dates <- function(d, cutoff) {
