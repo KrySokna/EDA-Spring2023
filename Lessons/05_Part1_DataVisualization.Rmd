@@ -20,6 +20,7 @@ Effective data visualization depends on purposeful choices about graph types. Th
 
 ```{r, message = FALSE, warning = FALSE}
 library(tidyverse);library(lubridate);library(here)
+install.packages("ggridges")
 library(ggridges)
 
 here()

@@ -46,7 +46,7 @@ ggplot(data=data.frame(x=0,y=0))+
   geom_text(
     x=0,
     y=0.025,
-    label=expression(paste("Mean is ", mu,",", R^{2},'=0.6'))
+    label=expression(paste("Mean is ", alpha,",", R^{2},'=0.6'))
     )
 
 #Print the plot
@@ -93,15 +93,24 @@ Say we want to plot the number of records each month in the Peter/Paul lakes dat
 
 ```{r Plot the number of records by month}
 #What kind of values are months?
+class(PeterPaul.chem.nutrients$month)
 
 #List unique values
-
+unique(PeterPaul.chem.nutrients$month)
 #Plot how many Lake observations occur each month
+ggplot(PeterPaul.chem.nutrients, aes(x=month))+
+  geom_bar()
 
 #Convert month to a factor -- with 12 levels, labelled with month names
+factor(PeterPaul.chem.nutrients$month, levels=1:12,labels=month.abb)
 
 #Try again: Plot how many Lake observations occur each month
-
+ggplot(PeterPaul.chem.nutrients, Viewaes(x=factor(month, levels=1:12, labels = month.abb)))+
+  geom_bar() +
+  scale_x_discrete(drop=FALSE) +
+  labs(
+    title="My Plot",
+    x="Month")
 #Alter to include missing months
 
 #Tidy up the code
@@ -228,14 +237,41 @@ Exercise: build your own scatterplots of PeterPaul.chem.nutrients
 # Plot surface temperatures by day of  year. 
 # Color your points by year, and facet by lake in two rows.
 # Change the ylab name
+PeterPaul.chem.nutrients %>%
+  filter(depth==0) %>%
+  ggplot(aes(
+    x=daynum,
+    y=temperature_C,
+    color=year4)
+  ) +
+  geom_point(size=0.5, alpha=0.5)+
+  facet_wrap(vars(lakename))
 
-
+ggplot(PeterPaul.chem.nutrients, aes(x=daynum, y=temperature_C))+
+ geom_point()
 #2. 
 # Plot temperature by date. Color your points by depth.
 # Change the size of your point to 0.5
 # Change the color palette to magma and play with direction (+- 1), which one makes more sense?
 # Change x axis to include marker/labels every 5 years
 
+PeterPaul.chem.nutrients%>%
+  ggplot(aes(
+    x=sampledate,
+    y=temperature_C,
+    color=depth))+
+  geom_point(size=0.5)+
+  scale_color_gradient(low = "YELLOW", high = "BLUE") +
+  scale_x_date(breaks = "5 years", date_labels = "%Y")
+
+PeterPaul.chem.nutrients%>%
+  ggplot(aes(
+    x=sampledate,
+    y=temperature_C,
+    color=depth))+
+  geom_point(size=0.5)+
+  scale_color_gradient()
+    
 
 
 ```
@@ -250,7 +286,13 @@ Exercise: Plot relationships between air quality measurements
 # Make the points 50 % transparent
 # Add a line of best fit for the linear regression of these variables.
 
-
+EPAair%>%
+  ggplot(aes(
+    y=Ozone,
+    x=PM2.5,
+    color=mean_Lat)) +
+  geom_point(size=3, alpha=0.5)+
+  geom_smooth()
 
 
 ```
@@ -265,7 +307,12 @@ Exercise: Plot distributions of AQI values for EPAair.
 # Create several types of plots depicting PM2.5, divided by year. 
 # Choose which plot displays the data best and justify your choice. 
 
-
+EPAair%>%
+  ggplot(aes(
+    y=PM2.5,
+    x=Year,
+    color=mean_Lat))+
+  geom_violin()
 
 ```
 
