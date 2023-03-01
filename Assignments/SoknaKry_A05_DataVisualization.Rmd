@@ -192,8 +192,8 @@ TN_Plot<- NTL_LTER.Nutrients%>%
 Combined_plot<-plot_grid(Temperature_Plot,TP_Plot, TN_Plot,
           axis="l",
           nrow=3,
-          align='h',
-          hjust=-1)
+          align='v',
+          hjust=-5)
  
  legend1<- get_legend(
   TN_Plot+
