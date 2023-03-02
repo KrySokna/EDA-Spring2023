@@ -1,4 +1,4 @@
----
+q---
 title: "Assignment 6: GLMs (Linear Regressios, ANOVA, & t-tests)"
 author: "Student Name"
 date: "Spring 2023"
