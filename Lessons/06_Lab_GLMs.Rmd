@@ -108,6 +108,19 @@ What other variables can we add to improve model?
 #Exercise 4: Build correlation plots and identify more possible explanatory variables to add to the regression.
 
 
+library(corrplot)
+library(dbplyr)
+library(tidyr)
+library(dplyr)
+
+EPAair.subset<-
+  EPAair%>%
+  select(mean_Lat:Ozone) %>%
+  drop_na()
+
+EPAairCorr<-cor(EPAair.subset)
+corrplot(EPAair.corr,method="ellipse")
+corrplot.mixed(EPAair.corr , upper="ellipse")
 
 
 
