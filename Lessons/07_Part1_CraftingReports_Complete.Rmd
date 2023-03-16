@@ -45,38 +45,39 @@ Lastly, this [website](https://rmarkdown.rstudio.com) give a great & thorough ov
 -   The knitting sequence\
     ![knitting](./img/rmarkdownflow.png)
 
-- Knitting commands in code chunks:
-  -  `include = FALSE` - code is run, but neither code nor results appear in knitted file
-  -  `echo = FALSE` - code not included in knitted file, but results are
-  -  `eval = FALSE` - code is not run in the knitted file
-  -  `message = FALSE` - messages do not appear in knitted file
-  -  `warning = FALSE` - warnings do not appear...
-  -  `fig.cap = "..."` - adds a caption to graphical results
+-   Knitting commands in code chunks:
+
+    -   `include = FALSE` - code is run, but neither code nor results appear in knitted file
+    -   `echo = FALSE` - code not included in knitted file, but results are
+    -   `eval = FALSE` - code is not run in the knitted file
+    -   `message = FALSE` - messages do not appear in knitted file
+    -   `warning = FALSE` - warnings do not appear...
+    -   `fig.cap = "..."` - adds a caption to graphical results
 
 ## WHAT ELSE CAN R MARKDOWN DO?
 
-See: <https://rmarkdown.rstudio.com> and class recording. 
+See: <https://rmarkdown.rstudio.com> and class recording.
 
-* Languages other than R... 
-* Various outputs...
+-   Languages other than R...
+-   Various outputs...
 
 ------------------------------------------------------------------------
 
 ## WHY R MARKDOWN?
 
->Fill in our discussion below with bullet points. Use italics and bold for emphasis (hint: use the cheat sheets or `Help` →`Markdown Quick Reference` to figure out how to make bold and italic text).
+> Fill in our discussion below with bullet points. Use italics and bold for emphasis (hint: use the cheat sheets or `Help` →`Markdown Quick Reference` to figure out how to make bold and italic text).
 
-* R Markdown is limited to ~~one language~~ **many languages**
-* (Add more bullets here)
+-   R Markdown is limited to ~~one language~~ **many languages**
+-   (Add more bullets here)
 
 ## TEXT EDITING CHALLENGE
 
 Create a table below that details the example datasets we have been using in class. The first column should contain the names of the datasets and the second column should include some relevant information about the datasets. (Hint: use the cheat sheets to figure out how to make a table in Rmd)
 
-| File name | Description |
-| --- | --- |
-| NWIS_SiteInfo_NE_RAW.csv | NWIS Site Information | 
-| NTL-LTER_Lake_Carbon_Raw.csv | NTL LTER Lake: Carbon data | 
+| File name                    | Description                |
+|------------------------------|----------------------------|
+| NWIS_SiteInfo_NE_RAW.csv     | NWIS Site Information      |
+| NTL-LTER_Lake_Carbon_Raw.csv | NTL LTER Lake: Carbon data |
 
 \newpage
 
@@ -109,7 +110,6 @@ my_theme <- theme_light() +
 theme_set(my_theme)
 ```
 
-
 In a new code chunk named "load data", load the NTL-LTER_Lake_Nutrients_Raw dataset, convert dates, display the head of the dataset, and set the date column to a date format.Customize the chunk options such that the code is run but is not displayed in the knitted document. The output, however, should be displayed.
 
 ```{r load data, echo = FALSE}
@@ -124,7 +124,6 @@ ntl.lter.raw$sampledate = mdy(ntl.lter.raw$sampledate)
 #Show the head
 head(ntl.lter.raw)
 ```
-
 
 ### Data Exploration, Wrangling, and Visualization
 
@@ -173,7 +172,6 @@ kable(ntl.lter.summary.tn,caption = "Surface Samples: Total Nitrogen")
 kable(ntl.lter.summary.tp,caption = "Surface Samples: Total Phosphorous")
 ```
 
-
 Create a fourth and fifth R chunk that generates two plots (one in each chunk): one for total N over time with different colors for each lake, and one with the same setup but for total P. Decide which geom option will be appropriate for your purpose, and select a color palette that is visually pleasing and accessible. Customize the chunk options such that the final figures are displayed but not the code used to generate the figures. In addition, customize the chunk options such that the figures are aligned on the left side of the page. Lastly, add a fig.cap chunk option to add a caption (title) to your plot that will display underneath the figure.
 
 ```{r plot.nitrogen, echo=FALSE, message=FALSE, warning=FALSE, fig.cap="Total Nitrogen", fig.align='left', fig.height= 2.5 }
@@ -206,11 +204,9 @@ ggplot(data=ntl.lter.processed, aes(x=sampledate,y=tp_ug,color=lakename)) +
 
 Write a paragraph describing your findings from the R coding challenge above. This should be geared toward an educated audience but one that is not necessarily familiar with the dataset. Then insert a horizontal rule below the paragraph. Below the horizontal rule, write another paragraph describing the next steps you might take in analyzing this dataset. What questions might you be able to answer, and what analyses would you conduct to answer those questions?
 
-
 ## KNIT YOUR PDF
 
 When you have completed the above steps, try knitting your PDF to see if all of the formatting options you specified turned out as planned. This may take some troubleshooting.
-
 
 ## OTHER R MARKDOWN CUSTOMIZATION OPTIONS
 
