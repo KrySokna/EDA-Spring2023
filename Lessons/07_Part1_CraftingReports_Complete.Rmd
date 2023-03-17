@@ -89,6 +89,7 @@ Create an R chunk below that installs the package `knitr`. Instead of commenting
 
 ```{r install.package, eval=FALSE}
 install('knitr')
+install.packages('knitr')
 
 ```
 

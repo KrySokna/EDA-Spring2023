@@ -11,7 +11,7 @@ nutrient_data <- nutrient_data %>%
   select(lakename, sampledate:po4)
 
 #### Define UI ----
-ui <- fluidPage(theme = shinytheme("yeti"),
+ui <- fluidPage(theme = shinytheme("superhero"),
   titlePanel("Nutrients in Peter Lake and Paul Lake"),
   sidebarLayout(
     sidebarPanel(
@@ -85,7 +85,9 @@ shinyApp(ui = ui, server = server)
 #### Questions for coding challenge ----
 #1. Play with changing the options on the sidebar. 
     # Choose a shinytheme that you like. The default here is "yeti"
+      ## "superhero"
     # How do you change the default settings? 
+      ## By defining the UI
     # How does each type of widget differ in its code and how it references the dataframe?
 #2. How is the mainPanel component of the UI structured? 
     # How does the output appear based on this code?
