@@ -89,6 +89,7 @@ shinyApp(ui = ui, server = server)
     # How do you change the default settings? 
       ## By defining the UI
     # How does each type of widget differ in its code and how it references the dataframe?
+      ## The input ID
 #2. How is the mainPanel component of the UI structured? 
     # How does the output appear based on this code?
 #3. Explore the reactive formatting within the server.

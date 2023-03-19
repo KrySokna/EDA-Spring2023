@@ -8,43 +8,44 @@ library(tidyverse)
 # Specify the date column as a date
 # Remove negative values for depth_id 
 # Include only lakename and sampledate through po4 columns
-nutrient_data <- 
-nutrient_data$sampledate <- as.Date()
-nutrient_data <-  %>%
-   %>%
+nutrient_data <- read_csv("Data/NTL-LTER_Lake_Nutrients_PeterPaul_Processed.csv")
+nutrient_data$sampledate <- as.Date(nutrient_data$sampledate, format = "%Y-%m-%d")
+nutrient_data <- nutrient_data %>%
+  filter(depth_id>0) %>%
+  select(lakename, simpledate:po4)
   
 
 #### Define UI ----
-ui <- fluidPage(theme = shinytheme("yeti"),
+ui <- fluidPage(theme = shinytheme("sandstone"),
   # Choose a title
-  titlePanel(),
+  titlePanel("Nutrients in Peter Lake and Paul Lake"),
   sidebarLayout(
     sidebarPanel(
       
       # Select nutrient to plot
-      selectInput(inputId = ,
-                  label = ,
-                  choices = , 
-                  selected = ),
+      selectInput(inputId = "Y",
+                  label ="Nutrient" ,
+                  choices = c("tn_ug", "tp_ug", "nh34", "no23", "po4"), 
+                  selected = "tn_ug"),
       
       # Select depth
-      checkboxGroupInput(inputId = ,
-                         label = ,
-                         choices = ,
-                         selected = ,
+      checkboxGroupInput(inputId = "fill",
+                         label = "Depth ID",
+                         choices = unique(nutrient_data$depth_id),
+                         selected = c(1,7)),
       
       # Select lake
-      checkboxGroupInput(inputId = ,
-                         label = ,
-                         choices = ,
-                         selected = ,
+      checkboxGroupInput(inputId = "shape",
+                         label = "lake",
+                         choices = c("Peter Lake", "Paul Lake"),
+                         selected = "Peter Lake",
 
       # Select date range to be plotted
-      sliderInput(inputId = ,
-                  label = ,
-                  min = ,
-                  max = ,
-                  value = ,
+      sliderInput(inputId ="x" ,
+                  label = "Date",
+                  min = as.Date("1991-05-01"),
+                  max = as.Date("2016-12-31"),
+                  value = c(as.Date("1995-01-01"), as.Date("1999-12-31")))),
 
     # Output: Description, lineplot, and reference
     mainPanel(
