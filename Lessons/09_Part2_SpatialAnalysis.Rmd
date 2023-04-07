@@ -2,7 +2,9 @@
 title: "Spatial Analysis in R, Part 2"
 author: "Environmental Data Analytics | John Fay & Luana Lima"
 date: "Spring 2023"
-output: pdf_document
+output:
+  html_document:
+    df_print: paged
 editor_options:
   chunk_output_type: console
 ---
@@ -126,7 +128,7 @@ mapView(counties_sf, zcol = "AWATER")
 
 
 #Examine some records
-head(huc8_sf)
+#head(huc8_sf)
 
 #View the data as a map, colored by the acreage in each
 
