@@ -178,10 +178,7 @@ df_withdrawals <- data.frame("Month" = rep(1:12),
         PWSID = !!PWSID,
         ownership = !!ownership,
         Date = my(paste(Month,"-",Year)))
-  
-  #Pause for a moment - scraping etiquette
-  #Sys.sleep(1) #uncomment this if you are doing bulk scraping!
-  
+
   #Return the dataframe
 return(df_withdrawals)
 
